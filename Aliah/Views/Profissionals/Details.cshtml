@@ -1,0 +1,90 @@
+﻿@model VaiCaralhoMVC.Models.Profissional
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Profissional</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Escolaridade.Curso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Escolaridade.Curso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plano.Data_inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plano.Data_inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profissao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponibilidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponibilidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Experiencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Experiencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto_perfil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Foto_perfil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comprovante_residencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comprovante_residencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Antecedentes_criminais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Antecedentes_criminais)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" href="~/img/elefante.jpg" type="image/png" />
+	<title>- Aliah</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+	@*<link href="~/css/bootstrap.css" rel="stylesheet" />*@
+	<!-- CSS only -->
+
+	<link href="~/css/themify-icons.css" rel="stylesheet" />
+	<link href="~/vendors/fontawesome/css/all.min.css" rel="stylesheet" />
+
+	<!-- JS, Popper.js, and jQuery -->
+
+	<link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="row affix-row ">
+		<style>
+			.sidebar1 {
+				background-image: url(../../img/banner/common-banner.png);
+				background-size: cover;
+				padding: 0px;
+				min-height: 100%;
+			}
+
+			.logo {
+				max-height: 130px;
+			}
+
+				.logo > img {
+					margin-top: 30px;
+					padding: 3px;
+					border: 3px solid white;
+					border-radius: 100%;
+				}
+
+			.list {
+				color: #fff;
+				list-style: none;
+				padding-left: 0px;
+			}
+
+				.list::first-line {
+					color: rgba(255, 255, 255, 0.5);
+				}
+
+				.list > li, h5 {
+					padding: 5px 0px 5px 40px;
+				}
+
+					.list > li:hover {
+						background-color: rgba(255, 255, 255, 0.2);
+						border-left: 5px solid white;
+						color: white;
+						font-weight: bolder;
+						padding-left: 35px;
+					}
+
+			.main-content {
+				text-align: center;
+			}
+		</style>
+		<br />
+		<br />
+
+		<div class="navbar navbar-default navbar-fixed-top" style="background-image:url(../../img/banner/common-banner.png)">
+			<div class="container">
+				<div class="navbar-header">
+					<h3>ALIAH</h3>
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					
+					
+				</div>
+
+				<div id="navbar" class="collapse navbar-collapse navbar-responsive-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="~/home/index" style="color:white">Home</a></li>
+						<li><a href="~/home/About" style="color:white">Quem Somos</a></li>
+						<li><a href="~/home/profissional" style="color:white">Buscar Profissional</a></li>
+						<li><a href="~/home/contato" style="color:white">Fale Conosco</a></li>
+						<li><a href="~/home/tipo_plano" style="color:white">Planos</a></li>
+						<li><a href="~/faqs/index" style="color:white">FAQ</a></li>
+						<li><a href="~/administrador/index" style="color:white">Menu ADM</a></li>
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-2 col-sm-4 sidebar1 ">
+					<div class="logo text-center">
+						<img src="~/img/elefante.jpg" class="img-responsive center-block" alt="Logo" style="height:70px;width:70px">
+					</div>
+					<br>
+
+					<div class="left-navigation">
+						<ul class="list">
+							<h5><strong>Meu Perfil</strong></h5>
+							<li><a href="~/Administrador/Index" class="nav-link text-white"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+							<li><a href="~/Usuarios/Index" class="nav-link text-white"><i class="fas fa-user" aria-hidden="true"></i> Usuários cadastrados</a></li>
+							<li><a href="~/Administrador/AprovarProfissional" class="nav-link text-white"><i class="fas fa-user-check" aria-hidden="true"></i> Aprovação de cadastro</a></li>
+							<li><a href="~/Tipo_plano/Index" class="nav-link text-white"><i class="far fa-money-bill-alt" style="color:white;"></i>  Planos</a></li>
+							<li><a href="~/Moedas/Index" <a href="~/Tipo_plano/Index" class="nav-link text-white" ><i class="fas fa-coins" style="color:white;"></i>  Moedas</a></li>
+						</ul>
+
+						<ul class="list">
+							<h5></i><strong> Pagamento</strong></h5>
+							@*<li><i class="far fa-money-bill-alt" style="color:white;"></i><a href="~/Usuarios/Index">  Cliente</a></li>
+								<li><i class="fas fa-coins" style="color:white;"></i><a href="~/Usuarios/Index">  Profissionais</a></li>*@
+						</ul>
+
+						<br>
+						<ul class="list">
+							<h5><strong>Outras Informações</strong></h5>
+							<li><a href="~/Faqs/IndexAdm" class="nav-link text-white"><i class="fas fa-question"> Dúvidas</i></a></li>
+							<li><a href="~/Formulario_contato/Index" class="nav-link text-white"><i class="far fa-comment-alt" aria-hidden="true"> Emails recebidos</i></a></li>
+							<li><a href="~/Home/Email" class="nav-link text-white"><i class="fab fa-rocketchat" style="color:white"> Fale conosco</i></a></li>
+							<li><a href="~/Home/Sair" class="nav-link text-white"><i class="fas fa-reply" aria-hidden="true"></i> Sair</a></li>
+							<br />
+							<br />
+							<br />
+							<br />
+						</ul>
+
+					</div>
+
+				</div>
+				<div class="col-sm-9 col-md-10 affix-content ">
+					<div class="container">
+						<div>
+							@RenderBody()
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer_area">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-12">
+					<div class="footer_top flex-column">
+						<div class="footer_logo">
+							<a href="#">
+								<img style="max-height: 80px; max-width: 80px" src="~/img/elefante.jpg" alt="" />
+							</a>
+
+							<h2 style="color: #f0d1f4;">ALIAH</h2>
+							<div class="d-lg-block d-none">
+								<nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+									<div class="collapse navbar-collapse offset">
+										<ul class="nav navbar-nav menu_nav mx-auto">
+											<li class="nav-item"><a class="nav-link text-white" href="~/home/Index">Home</a></li>
+											<li class="nav-item"><a class="nav-link text-white" href="~/home/About">Quem somos</a></li>
+											<li class="nav-item"><a class="nav-link text-white" href="~/home/Contratar">Contratar profissional</a></li>
+											<li class="nav-item"><a class="nav-link text-white" href="~/home/Planos">Planos</a></li>
+											<li class="nav-item"><a class="nav-link text-white" href="~/home/Faq">FAQ </a></li>
+											<li class="nav-item"><a class="nav-link text-white" href="~/home/Contato">Fale Conosco </a></li>
+											<li class="nav-item"><a class="nav-link text-white" href="~/home/Cadastrar">Cadastrar </a></li>
+											<li class="nav-item"><a class="nav-link text-white" href="~/home/Acesso">Login </a></li>
+										</ul>
+									</div>
+								</nav>
+							</div>
+						</div>
+						<div class="footer_social mt-lg-0 mt-4">
+							<a href="#"><i class="fab fa-facebook-f"></i></a>
+							<a href="#"><i class="fab fa-twitter"></i></a>
+							<a href="#"><i class="fab fa-skype"></i></a>
+							<a href="#"><i class="fab fa-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row footer_bottom justify-content-center">
+				<p class="col-lg-8 col-sm-12 footer-text">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;
+					<script>document.write(new Date().getFullYear());</script>
+					All rights reserved
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</p>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<VaiCaralhoMVC.Models.Profissional>
+
+@{
+    ViewBag.Title = "AprovarProfissional";
+    Layout = "~/Views/Shared/LayoutAdm.cshtml";
+}
+<div class="col-md-12 center">
+	<h2 class="text-center">Aprovar Profissional</h2>
+</div>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.Nome)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+		<td>
+			@Html.DisplayFor(modelItem => item.Usuario.Nome)
+		</td>
+       
+        <td>
+            @Html.ActionLink("Aprovar", "Aprovar", new { id=item.Id }) |
+            @Html.ActionLink("Reprovar", "Reprovar", new { id=item.Id }) |
+           
+           
+            <a href="~/Administrador/DetalheAprovacao/@item.Id"> Detalhes</a>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,23 @@
+﻿@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			@Html.Raw(ViewBag.GraficoPizza)<br /><br />
+		</div>
+		
+		@*<div class="col-md-6">
+			@Html.Raw(ViewBag.GraficoPizza2)<br /><br />
+		</div>*@
+
+		<div class="col-md-6">
+			@Html.Raw(ViewBag.GraficoColuna)
+		</div>
+		<div class="col-md-6">
+			@Html.Raw(ViewBag.GraficoBarra)
+		</div>
+		<br /><br />
+	</div>
+</div>

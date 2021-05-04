@@ -1,0 +1,373 @@
+﻿@model VaiCaralhoMVC.Models.CadastrarProfissional
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script type="text/javascript">
+
+	$(document).ready(function () {
+
+		function limpa_formulário_cep() {
+			// Limpa valores do formulário de cep.
+			$("#txtrua").val("");
+			$("#txtbairro").val("");
+			$("#txtcidade").val("");
+			$("#txtestado").val("");
+		}
+
+		//Quando o campo cep perde o foco.
+		$("#txtcep").blur(function () {
+
+			//Nova variável "cep" somente com dígitos.
+			var txtcep = $(this).val().replace(/\D/g, '');
+
+			//Verifica se campo cep possui valor informado.
+			if (txtcep != "") {
+
+				//Expressão regular para validar o CEP.
+				var validacep = /^[0-9]{8}$/;
+
+				//Valida o formato do CEP.
+				if (validacep.test(txtcep)) {
+
+					//Preenche os campos com "..." enquanto consulta webservice.
+					$("#txtrua").val("...");
+					$("#txtbairro").val("...");
+					$("#txtcidade").val("...");
+					$("#txtestado").val("...");
+
+					//Consulta o webservice viacep.com.br/
+					$.getJSON("https://viacep.com.br/ws/" + txtcep + "/json/?callback=?", function (dados) {
+
+						if (!("erro" in dados)) {
+							//Atualiza os campos com os valores da consulta.
+							$("#txtrua").val(dados.logradouro);
+							$("#txtbairro").val(dados.bairro);
+							$("#txtcidade").val(dados.localidade);
+							$("#txtestado").val(dados.uf);
+						} //end if.
+						else {
+							//CEP pesquisado não foi encontrado.
+							limpa_formulário_cep();
+							alert("CEP não encontrado.");
+						}
+					});
+				} //end if.
+				else {
+					//cep é inválido.
+					limpa_formulário_cep();
+					alert("Formato de CEP inválido.");
+				}
+			} //end if.
+			else {
+				//cep sem valor, limpa formulário.
+				limpa_formulário_cep();
+			}
+		});
+	});
+
+</script>
+
+<html>
+
+<body>
+	@using ( Html.BeginForm("CadastroProfissional", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))   {
+                    @Html.AntiForgeryToken()
+                    <section class="banner_area">
+		<div class="banner_inner d-flex align-items-center">
+			<div class="container">
+				<div class="banner_content text-center">
+					<h2>Seja um cuidador</h2>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="form-horizontal container w3-card-4 mt-3 mb-3">
+
+		<div class="col-12 col-lg-10 ">
+			<br />
+			<h3>Informações pessoais</h3>
+			<hr />
+		</div>
+		<div class="row">
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			<div class="col-md-10 mb-4">
+				<label>Nome*</label>
+				@Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: João da Silva" } })
+				@Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+
+			</div>
+
+            <div class="col-md-4 mb-4">
+                <label>CPF*</label>
+                @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control cpf", @placeholder = "xxx.xxx.xxx-xx" } })
+                @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <label>Data de nascimento*</label>
+                @Html.EditorFor(model => model.Data_nascimento, new { htmlAttributes = new { @class = "form-control", @placeholder = "dd/mm/aaaa", type = "date" } })
+                @Html.ValidationMessageFor(model => model.Data_nascimento, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <label>Sexo*</label>
+                <div>
+                    <label>
+                        @Html.RadioButtonFor(model => model.Sexo, "masculino") Masculino
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(model => model.Sexo, "feminino") Feminino
+                    </label>
+                </div>
+                @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+            </div>
+
+			<div class="col-md-4 mb-4">
+				@Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
+				@Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control telefone", @placeholder = "(00) 0000-0000" } })
+				@Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+
+			</div>
+
+			<div class="col-md-4 mb-4">
+				@Html.LabelFor(model => model.Celular, htmlAttributes: new { @class = "control-label col-md-2" })
+				@Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control telefonebr", @placeholder = "(00) 0 0000-0000" } })
+				@Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-md-2 mb-4">
+				<label>Foto de perfil</label>
+			<input type="file" name="Foto"/>
+				@Html.ValidationMessageFor(model => model.Foto_perfil, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<div class="col-12 col-lg-10 ">
+			<br />
+			<h3>Endereço</h3>
+			<hr />
+		</div>
+		<div class="row">
+            <div class="col-md-3 mb-4">
+                <label>CEP*</label>
+                @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control cep", @placeholder = "00000-000", id = "txtcep" } })
+                @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-md-7 mb-4">
+                <label>Rua*</label>
+                @Html.EditorFor(model => model.Rua, new { htmlAttributes = new { @class = "form-control txtrua", @placeholder = "Ex: João da Silva Ribeiro", @id = "txtrua" } })
+                @Html.ValidationMessageFor(model => model.Rua, "", new { @class = "text-danger" })
+
+            </div>
+
+			<div class="col-md-2">
+			</div>
+
+            <div class="col-md-4 mb-4">
+                <label>Bairro*</label>
+                @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control txtbairro", @placeholder = "Ex: Centro", @id = "txtbairro" } })
+                @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <label>Cidade*</label>
+                @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control txtcidade ", @placeholder = "Ex: São Paulo", @id = "txtcidade" } })
+                @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-2 mb-4">
+                <label>Número*</label>
+                @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control ", @placeholder = "Ex: 10" } })
+                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-md-5 mb-4">
+                <label>Estado*</label>
+                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: São Paulo", @id = "txtestado" } })
+                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+            </div>
+
+			<div class="col-md-4 mb-4">
+				<label>Comprovante de residência</label>
+				<input type="file" name="Comprovante" />
+				@Html.ValidationMessageFor(model => model.Comprovante_residencia, "", new { @class = "text-danger" })
+			</div>
+
+		</div>
+		<div class="col-12 col-lg-10 ">
+			<br />
+			<h3>Informações profissionais</h3>
+			<hr />
+		</div>
+
+
+		<div class="row">
+            <div class="col-md-4 mb-4">
+                <label>Profissão*</label>
+                <select id="Profissao" name="Profissao" class="form-control">
+                    <option Value="Cuidador de Idosos">Cuidador de Idosos</option>
+                    <option Value="Enfermeiro">Enfermeiro</option>
+                    <option Value="Babá">Babá</option>
+                </select>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <label>Disponibilidade*</label>
+                <select id="Disponibilidade" name="Disponibilidade" class="form-control">
+                    <option Value="A combinar">A combinar</option>
+                    <option Value="Matutino">Matutino</option>
+                    <option Value="Vespertino">Vespertino</option>
+                    <option Value="Noturno">Noturno</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Experiencia, htmlAttributes: new { @class = "control-label col-md-2" })
+                <select id="ddlExperiencia" name="Experiencia" autopostback="true" class="form-control">
+           
+                    <option Value="Sem experiência">Sem experiência</option>
+                    <option Value="até 1 ano">até 1 ano</option>
+                    <option Value="até 5 anos">até 5 anos</option>
+                    <option Value="mais de 5 anos">mais de 5 anos</option>
+                </select>
+
+            </div>
+			<div class="col-md-2 mb-4"></div>
+			<div class="col-md-2 mb-4">
+				Capacitação
+				<br />
+				@Html.EditorFor(model => model.listaCapacitacao)
+			</div>
+
+			<div class="col-md-2 mb-4">
+				Habilidade
+				<br />
+				@Html.EditorFor(model => model.listaHabilidade)
+			</div>
+
+			<div class="col-md-4 mb-4">
+				<label>Antecedentes criminais</label>
+				<input type="file" name="Antecedentes" />
+				@Html.ValidationMessageFor(model => model.Antecedentes_criminais, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="col-12 col-lg-10 ">
+			<br />
+			<h3>Escolaridade</h3>
+			<hr />
+		</div>
+		<div class="row">
+
+            <div class="col-md-4 mb-4">
+            <label>Formação*</label>
+                <select id="ddlFormacao" name="Curso" autopostback="true" class="form-control">
+                    <option Value="Nenhum">Nenhum</option>
+                    <option Value="Ensino médio">Ensino médio</option>
+                    <option Value="Ensino fundamental">Ensino fundamental</option>
+                    <option Value="Ensino Técnico">Ensino Técnico</option>
+                    <option Value="Ensino Superior">Ensino Superior</option>
+                    
+                </select>
+            </div>
+            <div class="col-md-4 mb-4">
+                <label>Curso*</label>
+                <select id="ddlNivel" name="Nivel" autopostback="true" class="form-control">   
+                    <option Value="Nenhum">Nenhum</option>
+                    <option Value="Técnico">Técnico</option>
+                    <option Value="Profissionalizante">Profissionalizante</option>
+                    <option Value="Superior">Superior</option>
+                </select>
+            </div>
+
+			<div class="col-md-2 mb-4">
+				<label>Nivel*</label>
+                <select id="ddlStatus" name="Status" autopostback="true" class="form-control">
+                    <option Value="Completo">Completo</option>
+                    <option Value="Incompleto">Incompleto</option>
+                    <option Value="Cursando">Cursando</option>
+                </select>
+			</div>
+
+			<div class="col-md-4 mb-4">
+				<label>Instituição*</label>
+				@Html.EditorFor(model => model.Instituicao, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: Etec" } })
+				@Html.ValidationMessageFor(model => model.Instituicao, "", new { @class = "text-danger" })
+			</div>
+
+
+			<div class="col-md-3 mb-4">
+				<label>Data de início</label>
+				@Html.EditorFor(model => model.Data_inicio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: 01/01/2001", type = "date" } })
+				@Html.ValidationMessageFor(model => model.Data_inicio, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-md-3 mb-4">
+				<label>Data de conclusão</label>
+				@Html.EditorFor(model => model.Data_termino, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: 12/06/2002", type = "date" } })
+				@Html.ValidationMessageFor(model => model.Data_termino, "", new { @class = "text-danger" })
+			</div>
+            <div class="col-md-4 mb-4">
+              <label>Modalidade*</label>
+                <select id="ddlModalidade" name="Modalidade" autopostback="true" class="form-control">
+                    <option Value="Presencial">Presencial</option>
+                    <option Value="EAD">EAD</option>
+                </select>
+            </div>
+
+
+			
+		</div>
+		<div class="col-12 col-lg-10 ">
+			<br />
+			<h3>Acesso</h3>
+			<hr />
+		</div>
+		<div class="row">
+			<div class="col-md-10 mb-4">
+				@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+				@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Profissional@aliah.com" } })
+				@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+			</div>
+
+
+            <div class="col-md-5 mb-4">
+
+                <label>&ensp; Senha</label>
+                <i class="fa fa-info-circle" style="font-size:19px; color:rebeccapurple;" title="A senha precisa conter pelo menos uma letra maiúscula, uma minúscula e número."> </i>
+                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: ******" } })
+                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+            </div>
+
+
+			<div class="col-md-5 mb-4">
+				@Html.LabelFor(model => model.ConfirmaSenha, htmlAttributes: new { @class = "control-label " })
+				@Html.EditorFor(model => model.ConfirmaSenha, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ex: ******" } })
+				@Html.ValidationMessageFor(model => model.ConfirmaSenha, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+
+		<div class="form-group mb-4">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Salvar" class="primary_btn" />
+			</div>
+		</div>
+		<br />
+		<br />
+	</div>
+
+
+
+	}
+
+
+</body>
+</html>

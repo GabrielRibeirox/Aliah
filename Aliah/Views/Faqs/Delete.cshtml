@@ -1,0 +1,41 @@
+﻿@model VaiCaralhoMVC.Models.Faq
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/LayoutAdm.cshtml";
+}
+
+<section class="card">
+<h3 class="center-block">Você deseja excluir essa pergunta? </h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pergunta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pergunta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resposta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resposta)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="container form-actions">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "IndexAdm")
+        </div>
+    }
+</div>
+</section>

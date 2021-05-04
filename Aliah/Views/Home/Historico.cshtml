@@ -1,0 +1,74 @@
+﻿@model VaiCaralhoMVC.Models.Usuario
+
+
+@if (User.Identity.Name.Split('|')[2] == "3")
+{
+
+	ViewBag.Title = "Edit";
+	Layout = "~/Views/Shared/_PartialProfissional.cshtml";
+
+}
+else if (User.Identity.Name.Split('|')[2] == "2")
+{
+
+	ViewBag.Title = "Edit";
+	Layout = "~/Views/Shared/_PartialCliente.cshtml";
+
+}
+<div class="col-md-12">
+<h5 class="text-center">Meus Perfils visualizados</h5>
+	<hr />
+    </div>
+
+<table class="table">
+	<tr>
+		<th>
+			<label>Data da visualização </label>
+		</th>
+		<th>
+			<label>Descrição </label>
+		</th>
+		<th>
+			<label>Nome do profissional </label>
+		</th>
+
+		<th>
+			<label>Valor </label>
+		</th>
+
+	</tr>
+	@foreach (var item in Model.Movimentacaos)
+	{
+
+		<tr>
+			<td>
+				@item.Data
+			</td>
+		
+			<td>
+				@item.Descricao
+			</td>
+			<td>
+				@item.Profissional.Usuario.Nome |
+				@Html.ActionLink("Ver mais", "DetalheProfissional", new { id = item.ProfissionalId })
+			</td>
+
+			<td>
+				R$ @item.Quantidade,00
+			</td>
+
+			
+
+
+		</tr>
+
+	}
+	</table>
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+﻿@model VaiCaralhoMVC.Models.Usuario
+
+
+@{
+	Layout = "~/Views/Shared/_PartialCliente.cshtml";
+}
+			
+
+					<div class="w3-card-4 col-md-10 col-sm-8 ml-4 text-center">
+						<div class="row">
+
+                            <div class="col-md-6 col-sm-5 mt-4">
+                                <h5>Informações</h5>
+                                <hr />
+                                <p>Nome: @Html.DisplayFor(model => Model.Nome)</p>
+                                <p>Data de nascimento: @Html.DisplayFor(model => Model.Data_nascimento)</p>
+                                <p>Sexo: @Html.DisplayFor(model => Model.Sexo)</p>
+                                <p>CPF: @Html.DisplayFor(model => Model.Cpf)</p>
+                                @Html.ActionLink("Atualizar", "EditContato", new { id = Model.Id }) |
+                            </div>
+
+							<div class="col-md-6 col-sm-5 mt-4">
+								<h5>Contatos</h5>
+								<hr />
+								<p>Email: @Html.DisplayFor(model => Model.Email)</p>
+								<p>Telefone: @Html.DisplayFor(model => Model.Telefone)</p>
+								<p>Celular: @Html.DisplayFor(model => Model.Celular)</p>
+							</div>
+
+
+                            <div class="col-md-6 col-sm-5 mt-3">
+                                <h5>Endereço</h5>
+                                <hr />
+                                <p>CEP: @Html.DisplayFor(model => Model.Endereco.ToList().FirstOrDefault().Cep)</p>
+                                <p>Estado: @Html.DisplayFor(model => Model.Endereco.ToList().FirstOrDefault().Estado)</p>
+                                <p>Cidade: @Html.DisplayFor(model => Model.Endereco.ToList().FirstOrDefault().Cidade)</p>
+                                <p>Bairro: @Html.DisplayFor(model => Model.Endereco.ToList().FirstOrDefault().Bairro)</p>
+                                <p>Número: @Html.DisplayFor(model => Model.Endereco.ToList().FirstOrDefault().Numero)</p>
+                                @Html.ActionLink("Atualizar", "EditEnd", new { id = Model.Id }) |
+                            </div>
+
+							
+
+
+							</div>
+
+
+						</div>
+						<br />
+						<br />
+						<br />
+					
+
+

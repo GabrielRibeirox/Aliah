@@ -1,0 +1,78 @@
+﻿@model IEnumerable<VaiCaralhoMVC.Models.Faq>
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>FAQ</h2>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="form-horizontal container w3-card-4 mt-3 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12 col-md-12 mt-5 text-justify">
+                <div class="container py-3">
+                    <div class="row">
+
+
+                        <div class="accordion col-md-12" id="faqExample">
+                            <div class="col-12 col-md-12 col-lg-12 mx-auto">
+                                <br />
+                                <h4>Caso tenha alguma dúvida que não esteja aqui, nos mande na aba</h4><a href="~/Home/Contato"> <h4 style="font-style:italic; text-decoration:underline"> FALE CONOSCO</h4></a>
+                                <hr />
+                               
+                                <div class="card">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="card-body">
+
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                @Html.DisplayFor(modelItem => item.Pergunta)
+                                            </button>
+                                            <div class="card-body">
+                                                @Html.DisplayFor(modelItem => item.Resposta)
+
+                                            </div>
+
+                                        </div>
+                                    }
+                                </div>
+                                       
+                                        
+                                        <br />
+                                        <br />
+                                    </div>
+
+                                    @*<asp:Literal runat="server" ID="ltlcards"></asp:Literal>*@
+
+                                </div>
+
+                            </div>
+
+                            <!--/row-->
+                        </div>
+                        <!--container-->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <tr>
+            <td></td>
+            <td>
+
+        </tr>
+
+

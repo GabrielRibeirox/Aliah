@@ -1,0 +1,188 @@
+﻿@model VaiCaralhoMVC.Models.UsuarioEndereco
+
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/LayoutAdm.cshtml";
+}
+
+<style>
+</style>
+
+@*<table class="table table-responsive table-striped table-borderless ">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Tipo_cadastro.Descricao)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Nome)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Cpf)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Data_nascimento)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Sexo)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Email)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Senha)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Celular)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Telefone)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Status)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Hash)
+		</th>
+		<th></th>
+	</tr>*@
+<div class="col-md-12 text-center">
+
+	<h3>
+
+		@Html.ActionLink("Criar novo Contato", "Create", new { @class = "btn btn-primary", style = "color: Red" })
+	</h3>
+</div>
+	<div class="container">
+		<div class="row">
+
+			@foreach (var item in Model.Usuarios)
+			{
+				<div class="col-xs-12 col-sm-6 col-md-4 mt-4 mb-2">
+					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+						<div class="mainflip">
+
+							@*<div class=" col-md-3 p-4 mt-1 " id="home-box">
+									<div class="card w3-card-4 border border-dark" style="width:100%; height:100%">
+										<ul class="list-group">
+											<li class="list-group-item"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Usuario: @Html.DisplayFor(modelItem => item.Tipo_cadastro.Descricao)</li>
+
+											<li class="list-group-item"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Nome: @Html.DisplayFor(modelItem => item.Nome)</li>
+
+											<li class="list-group-item off"><span class="fa fa-check" style="color:deepskyblue" aria-hidden="true"></span> CPF: @Html.DisplayFor(modelItem => item.Cpf)</li>
+
+											<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Nascimento: @Html.DisplayFor(modelItem => item.Data_nascimento)</li>
+
+											<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Sexo: @Html.DisplayFor(modelItem => item.Sexo)</li>
+
+											<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Email: @Html.DisplayFor(modelItem => item.Email)</li>
+
+											<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Celular: @Html.DisplayFor(modelItem => item.Celular)</li>
+
+											<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Telefone: @Html.DisplayFor(modelItem => item.Telefone)</li>
+
+											<li class="list-group-item off">
+												@Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "fa fa-edit" })|
+												@Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "fa fa-address-card-o" })|
+												@Html.ActionLink("Deletar", "Delete", new { id = item.Id }, new { @class = "fa fa-trash" })
+											</li>
+
+										</ul>
+									</div>
+								</div>*@
+
+
+
+							<!-- Team member -->
+
+							<div class="frontside">
+								<div class="card">
+
+									<div class="card-body text-center">
+										<ul class="list-group">
+											<li class="list-group-item"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Usuario: @Html.DisplayFor(modelItem => item.Tipo_cadastro.Descricao)</li>
+
+											<li class="list-group-item"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Nome: @Html.DisplayFor(modelItem => item.Nome)</li>
+
+											<li class="list-group-item off"><span class="fa fa-check" style="color:deepskyblue" aria-hidden="true"></span> CPF: @Html.DisplayFor(modelItem => item.Cpf)</li>
+
+											<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Nascimento: @Html.DisplayFor(modelItem => item.Data_nascimento)</li>
+
+											<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Sexo: @Html.DisplayFor(modelItem => item.Sexo)</li>
+
+											<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Email: @Html.DisplayFor(modelItem => item.Email)</li>
+
+											<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Celular: @Html.DisplayFor(modelItem => item.Celular)</li>
+
+											<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Telefone: @Html.DisplayFor(modelItem => item.Telefone)</li>
+
+											<li class="list-group-item off">
+												@*@Html.ActionLink(" Editar", "Edit", new { id = item.Id }, new { @class = "fa fa-edit" })|*@
+												@Html.ActionLink(" Detalhes", "Details", new { id = item.Id }, new { @class = "fa fa-address-card-o" })|
+												@*@Html.ActionLink(" Deletar", "Delete", new { id = item.Id }, new { @class = "fa fa-trash" })*@
+											</li>
+
+
+										</ul>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			}
+
+
+
+		</div>
+	</div>
+
+@*<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.Tipo_cadastro.Descricao)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Nome)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Cpf)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Data_nascimento)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Sexo)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Email)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Senha)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Celular)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Telefone)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Status)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Hash)
+		</td>
+		<td>
+			@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "fas fa-pencil-alt" }) |
+			@Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "far fa-address-card" }) |
+			@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "fa fa-trash" })
+		</td>
+	</tr>*@
+
+
+@*</table>*@
+

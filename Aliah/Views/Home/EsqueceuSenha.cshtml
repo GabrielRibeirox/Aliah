@@ -1,0 +1,62 @@
+﻿@model VaiCaralhoMVC.Models.EsqueceuSenha
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+   
+</head>
+<body>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/jqueryval")
+	<section class="banner_area">
+		<div class="banner_inner d-flex align-items-center">
+			<div class="container">
+				<div class="banner_content text-center">
+					<h2>Esqueceu a senha</h2>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+		<div class="form-horizontal container w3-card-4 mt-3 mb-3">
+
+			<div class="form-horizontal">
+				<br>
+				<h4>Insira seu email e aperte em enviar, logo em seguida será enviado sua redefinação de senha!</h4>
+				<hr />
+				@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+				<div class="form-group">
+					@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "EX: Joao@gmail.com" } })
+						@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<br />
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+						<input type="submit" value="Enviar" class="primary_btn" />
+					</div>
+				</div>
+				<br />
+				<br />
+			</div>
+			</div>
+			}
+
+			@*<div>
+					@Html.ActionLink("Back to List", "Index")
+				</div>*@
+	</body>
+</html>

@@ -1,0 +1,36 @@
+﻿@model VaiCaralhoMVC.Models.Vendas
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	// Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Grafico</title>
+</head>
+<body>
+	<div class="container">
+
+	<div class="row">
+	<div class="col-md-12">
+		@Html.Raw(ViewBag.GraficoPizza)<br /><br />
+	</div>
+		<div class="col-md-12">
+		@Html.Raw(ViewBag.GraficoPizzaa)<br /><br />
+	</div>
+	<div class="col-md-5">
+		@Html.Raw(ViewBag.GraficoColuna)
+	</div>
+		<div class="col-md-1"></div>
+	<div class="col-md-5">
+		@Html.Raw(ViewBag.GraficoBarra)
+	</div>
+	<br /><br />
+		</div>
+		 </div>
+</body>
+</html>

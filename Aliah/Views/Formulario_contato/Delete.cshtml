@@ -1,0 +1,76 @@
+﻿@model VaiCaralhoMVC.Models.Formulario_contato
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/LayoutAdm.cshtml";
+}
+
+
+<h3>Tem certeza que deseja apagar esta mensagem?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assunto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assunto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions">
+
+            <input type="submit" value="Apagar" class="btn btn-default" />
+       
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="text-center">
+            <div style="color:blue">
+                @Html.ActionLink("Voltar para emails recebidos", "Index")
+            </div>
+
+        </div>
+        </div>
+    }
+</div>

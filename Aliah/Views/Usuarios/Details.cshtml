@@ -1,0 +1,130 @@
+﻿@model VaiCaralhoMVC.Models.Usuario
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/LayoutAdm.cshtml";
+}
+
+
+
+	<h2>Detalhes do usuário</h2>	<hr />
+	@*<dl class="dl-horizontal">*@
+	<div class=" col-md-3 offset-4 p-4 mt-1" id="home-box">
+		<div class="card w3-card-4 border border-dark" style="width:100%; height:100%">
+			<ul class="list-group">
+				<li class="list-group-item"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Usuario: @Html.DisplayNameFor(model => model.Tipo_cadastro.Descricao)</li>
+
+				<li class="list-group-item"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Nome: @Html.DisplayFor(modelItem => Model.Nome)</li>
+
+				<li class="list-group-item off"><span class="fa fa-check" style="color:deepskyblue" aria-hidden="true"></span> CPF: @Html.DisplayFor(modelItem => Model.Cpf)</li>
+
+				<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Nascimento: @Html.DisplayFor(modelItem => Model.Data_nascimento)</li>
+
+				<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Sexo: @Html.DisplayFor(modelItem => Model.Sexo)</li>
+
+				<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Email: @Html.DisplayFor(modelItem => Model.Email)</li>
+
+				<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Celular: @Html.DisplayFor(modelItem => Model.Celular)</li>
+
+				<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Telefone: @Html.DisplayFor(modelItem => Model.Telefone)</li>
+
+
+
+			</ul>
+		</div>
+	</div>
+	@*<dt>
+					@Html.DisplayNameFor(model => model.Tipo_cadastro.Descricao)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Tipo_cadastro.Descricao)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Nome)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Nome)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Cpf)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Cpf)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Data_nascimento)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Data_nascimento)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Sexo)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Sexo)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Email)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Email)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Senha)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Senha)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Celular)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Celular)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Telefone)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Telefone)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Status)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Status)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Hash)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Hash)
+				</dd>
+			</div>
+		</dl>*@
+
+	
+@*<p>
+	@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+	@Html.ActionLink("Back to List", "Index")
+</p>*@

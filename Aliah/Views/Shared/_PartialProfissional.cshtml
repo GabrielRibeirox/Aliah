@@ -1,0 +1,218 @@
+﻿@model VaiCaralhoMVC.Models.Usuario
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .sidebar1 {
+        background-image: url(../../img/banner/common-banner.png);
+        background-size: cover;
+        padding: 0px;
+        min-height: 100%;
+    }
+
+    .logo {
+        max-height: 130px;
+    }
+
+        .logo > img {
+            margin-top: 30px;
+            padding: 3px;
+            border: 3px solid white;
+            border-radius: 100%;
+        }
+
+    .list {
+        color: #fff;
+        list-style: none;
+        padding-left: 0px;
+    }
+
+        .list::first-line {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .list > li, h5 {
+            padding: 5px 0px 5px 40px;
+        }
+
+            .list > li:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+                border-left: 5px solid white;
+                color: white;
+                font-weight: bolder;
+                padding-left: 35px;
+            }
+
+    .main-content {
+        text-align: center;
+    }
+
+    /*Começo do card*/
+
+    .card-counter {
+        box-shadow: 2px 2px 10px #DADADA;
+        margin: 5px;
+        padding: 20px 10px;
+        background-color: #fff;
+        height: 100px;
+        border-radius: 5px;
+        transition: .3s linear all;
+    }
+
+        .card-counter:hover {
+            box-shadow: 4px 4px 20px #DADADA;
+            transition: .3s linear all;
+        }
+
+        .card-counter.primary {
+            background-color: #007bff;
+            color: #FFF;
+        }
+
+        .card-counter.danger {
+            background-color: #ef5350;
+            color: #FFF;
+        }
+
+        .card-counter.success {
+            background-color: #66bb6a;
+            color: #FFF;
+        }
+
+        .card-counter.info {
+            background-color: #26c6da;
+            color: #FFF;
+        }
+
+        .card-counter i {
+            font-size: 5em;
+            opacity: 0.2;
+        }
+
+        .card-counter .count-numbers {
+            position: absolute;
+            right: 35px;
+            top: 20px;
+            font-size: 32px;
+            display: block;
+        }
+
+        .card-counter .count-name {
+            position: absolute;
+            right: 35px;
+            top: 65px;
+            font-style: italic;
+            text-transform: capitalize;
+            opacity: 0.5;
+            display: block;
+            font-size: 18px;
+        }
+</style>
+<br />
+<br />
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-2 col-sm-4 sidebar1 ">
+            <div class="logo text-center">
+                <img src="~/Uploads/@Model.Profissional.FirstOrDefault().Foto_perfil" class="img-responsive center-block" alt="Logo" style="height:70px;width:70px">
+                <br />
+                <figureCaption style="color:black; font-size:large; color:white;">@Html.DisplayFor(modelItem => Model.Profissional.FirstOrDefault().Profissao)</figureCaption>
+            </div>
+            <br>
+
+            <div class="left-navigation">
+                <ul class="list">
+                    <h5><strong>@Html.DisplayFor(modelItem => Model.Nome)</strong></h5>
+
+                    <li><i class="fa fa-home" aria-hidden="true"><a href="~/home/ProfissionalInfo" style="color:white"> Home</a></i></li>
+                    <li><i class="fa fa-donate" aria-hidden="true"><a href="~/home/MeusPlanos" style="color:white"> Meus Planos</a></i></li>
+                    <li><i class="fa fa-donate" aria-hidden="true"><a href="~/home/MinhasMoedas" style="color:white"> Minhas Moedas</a></i></li>
+                    <li><i class="fa fa-address-card" aria-hidden="true"><a href="~/home/MeuPerfil" style="color:white"> Perfil</a></i></li>
+
+                </ul>
+                <br>
+
+				<ul class="list">
+					<h5><strong>Outras Informações</strong></h5>
+					<li><i class="fas fa-chart-line" aria-hidden="true"> Histórico</i></li>
+					@if (Model.Status == "4")
+					{
+
+						<li><i class="far fa-smile" aria-hidden="true"> <a data-toggle="modal" data-target="#myModal">Ativar conta</a></i></li>
+
+
+					}
+					else if (Model.Status == "3")
+					{
+
+						<li><i class="far fa-frown-open" aria-hidden="true"> <a data-toggle="modal" data-target="#myModal">Desativar conta</a></i></li>
+
+
+					}
+
+					<li><a href="~/Home/Sair" class="nav-link text-white"><i class="fas fa-reply" aria-hidden="true"></i> Sair</a></li>
+					<br />
+					<br />
+					<br />
+					<br />
+				</ul>
+
+
+                <!-- Modal -->
+
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="myModal" role="dialog" style="margin-top:200px">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                   
+					<div class="modal-footer">
+						@if (Model.Status == "4")
+						{
+							<div class="modal-header">
+								<h4 class="modal-title">Tem certeza que deseja ativar sua conta?</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+							<div class="modal-body">
+								<p style="color:red;">Se escolher "Ativar" o seu perfil passará por aprovação novamente </p>
+							</div>
+							@Html.ActionLink("Ativar", "AtivarPerfil", new { id = Model.Id })
+
+						}
+						else if (Model.Status == "3")
+						{
+							<div class="modal-header">
+								<h4 class="modal-title">Tem certeza que deseja desativar sua conta?</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+							<div class="modal-body">
+								<p style="color:red;">Se escolher "sim" o seu perfil não irá aparecer na lista de profissionais e seus dados serão perdidos, para ativar novamente precisará fazer um novo requerimento </p>
+							</div>
+							@Html.ActionLink("Sim", "DesativarPerfil", new { id = Model.Id })
+
+						}
+
+
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Não</button>
+					</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-10 affix-content ">
+
+
+            @RenderBody()
+
+
+
+        </div>
+
+    </div>
+

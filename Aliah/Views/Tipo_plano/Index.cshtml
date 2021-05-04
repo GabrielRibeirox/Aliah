@@ -1,0 +1,50 @@
+﻿@model IEnumerable<VaiCaralhoMVC.Models.Tipo_plano>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/LayoutAdm.cshtml";
+}
+<div class="col-md-12">
+<h2 class="text-center">Planos</h2>
+    </div>
+<p>
+    @Html.ActionLink("Criar um novo plano", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label>Nome </label>
+        </th>
+        <th>
+            <label>Descrição </label>
+        </th>
+        <th>
+            <label>Valor </label>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+      
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+               
+                @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

@@ -1,0 +1,159 @@
+﻿@model VaiCaralhoMVC.Models.Usuario
+
+@{
+	ViewBag.Title = "Delete";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container text-center">
+	<h3>Tem certeza que deseja excluir essa conta?</h3>
+	<hr />
+	<div class=" col-md-4 offset-4 p-4 mt-1" id="home-box">
+		<div class="card w3-card-4 border border-dark" style="width:100%; height:100%">
+			<ul class="list-group">
+				<li class="list-group-item"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Usuario: @Html.DisplayNameFor(model => model.Tipo_cadastro.Descricao)</li>
+
+				<li class="list-group-item"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Nome: @Html.DisplayFor(modelItem => Model.Nome)</li>
+
+				<li class="list-group-item off"><span class="fa fa-check" style="color:deepskyblue" aria-hidden="true"></span> CPF: @Html.DisplayFor(modelItem => Model.Cpf)</li>
+
+				<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Nascimento: @Html.DisplayFor(modelItem => Model.Data_nascimento)</li>
+
+				<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Sexo: @Html.DisplayFor(modelItem => Model.Sexo)</li>
+
+				<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Email: @Html.DisplayFor(modelItem => Model.Email)</li>
+
+				<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Celular: @Html.DisplayFor(modelItem => Model.Celular)</li>
+
+				<li class="list-group-item off"><span class="fa fa-check" aria-hidden="true" style="color:deepskyblue"></span> Telefone: @Html.DisplayFor(modelItem => Model.Telefone)</li>
+				<li class="list-group-item off">
+					@using (Html.BeginForm())
+					{
+						@Html.AntiForgeryToken()
+
+						<div class="form-actions no-color">
+							<input type="submit" value="Deletar" class="primary_btn" />
+						</div>
+					}
+				</li>
+
+
+			</ul>
+		</div>
+	</div>
+	@*<div class=" col-md-3 offset-4 p-4 mt-1" id="home-box">
+			<div class="card w3-card-4 border border-dark" style="width:100%; height:100%">
+
+				<dl class="dl-horizontal">
+					<dt>
+						@Html.DisplayNameFor(model => model.Tipo_cadastro.Descricao)
+					</dt>
+
+					<dd>
+						@Html.DisplayFor(model => model.Tipo_cadastro.Descricao)
+					</dd>
+
+					<dt>
+						@Html.DisplayNameFor(model => model.Nome)
+					</dt>
+
+					<dd>
+						@Html.DisplayFor(model => model.Nome)
+					</dd>
+
+					<dt>
+						@Html.DisplayNameFor(model => model.Cpf)
+					</dt>
+
+					<dd>
+						@Html.DisplayFor(model => model.Cpf)
+					</dd>
+
+					<dt>
+						@Html.DisplayNameFor(model => model.Data_nascimento)
+					</dt>
+
+					<dd>
+						@Html.DisplayFor(model => model.Data_nascimento)
+					</dd>
+
+					<dt>
+						@Html.DisplayNameFor(model => model.Sexo)
+					</dt>
+
+					<dd>
+						@Html.DisplayFor(model => model.Sexo)
+					</dd>
+
+					<dt>
+						@Html.DisplayNameFor(model => model.Email)
+					</dt>
+
+					<dd>
+						@Html.DisplayFor(model => model.Email)
+					</dd>
+
+					<dt>
+						@Html.DisplayNameFor(model => model.Senha)
+					</dt>
+
+					<dd>
+						@Html.DisplayFor(model => model.Senha)
+					</dd>
+
+					<dt>
+						@Html.DisplayNameFor(model => model.Celular)
+					</dt>
+
+					<dd>
+						@Html.DisplayFor(model => model.Celular)
+					</dd>
+
+					<dt>
+						@Html.DisplayNameFor(model => model.Telefone)
+					</dt>
+
+					<dd>
+						@Html.DisplayFor(model => model.Telefone)
+					</dd>
+
+					<dt>
+						@Html.DisplayNameFor(model => model.Status)
+					</dt>
+
+					<dd>
+						@Html.DisplayFor(model => model.Status)
+					</dd>
+
+					<dt>
+						@Html.DisplayNameFor(model => model.Hash)
+					</dt>
+
+					<dd>
+						@Html.DisplayFor(model => model.Hash)
+					</dd>
+
+				</dl>
+			</div>
+		</div>*@
+	@*@using (Html.BeginForm())
+		{
+			@Html.AntiForgeryToken()
+
+			<div class="form-actions no-color">
+				<input type="submit" value="Delete" class="btn btn-default" /> |
+				@Html.ActionLink("Back to List", "Index")
+			</div>
+		}*@
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />

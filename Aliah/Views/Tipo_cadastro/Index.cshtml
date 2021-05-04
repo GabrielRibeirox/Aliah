@@ -1,0 +1,35 @@
+﻿@model IEnumerable<VaiCaralhoMVC.Models.Tipo_cadastro>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutAdm.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Criar novo usuário", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Deletar Usuário", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+
+}
+
+</table>

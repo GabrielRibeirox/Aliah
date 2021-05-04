@@ -1,0 +1,55 @@
+﻿@model VaiCaralhoMVC.Models.Usuario
+
+
+@{
+	Layout = "~/Views/Shared/_PartialProfissional.cshtml";
+}
+
+<div class="col-md-12">
+	<div class="row">
+
+
+
+		@foreach (var item in Model.Profissional.FirstOrDefault().Planos)
+		{
+			
+
+			<div class=" w3-card-4  ml-4 col-md-3 mt-3 mb-5">
+				<br />
+
+				<h4 class="text-center"> Plano: @item.Tipo_plano.Nome</h4>
+
+				<hr />
+				<figure class="text-center">
+					<img src="../img/services/s4.png" alt="" />
+				</figure>
+				<br />
+				<br />
+
+				<p>Descrição: @item.Tipo_plano.Descricao</p>
+				<p>Válido por: @item.Tipo_plano.QuantidadeDias dias</p>
+				<p>Data da compra @item.Data_inicio</p>
+				<p> Data de expiração @item.Data_termino</p>
+
+
+
+			</div>
+
+		}
+
+	</div>
+
+
+</div>
+<br />
+<br />
+<br />
+
+
+
+
+
+
+
+
+

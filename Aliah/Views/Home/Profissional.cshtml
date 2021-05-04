@@ -1,0 +1,353 @@
+﻿@model  IEnumerable<VaiCaralhoMVC.Models.Profissional>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    body {
+        font-family: Arial;
+    }
+
+    h2 {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 5px;
+    }
+
+    .title {
+        color: grey;
+    }
+
+    /*.blocoPesquisa {
+            margin-top: 100px;
+        }*/
+
+    .btnContato {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .profissional {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 5px;
+        margin: 5px;
+        margin-bottom: 20px;
+        background-color: #fff;
+    }
+
+    /**.blocoEsquerda {
+            position: fixed;
+        }*/
+
+    .blocoDireita {
+        margin: 0 auto;
+        margin-right: 0;
+    }
+</style>
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Escolaridade.Curso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Plano.Data_inicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Profissao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disponibilidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Experiencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto_perfil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comprovante_residencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Antecedentes_criminais)
+        </th>
+        <th></th>
+    </tr>*@
+
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>Encontre profissionais</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row blocoPesquisa">
+
+        <div class="col-md-4 mt-4">
+            <h2>Busque profissionais</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Profissão</label><br />
+                    <select id="ddlProfissao" autopostback="true" class="form-control">
+                        <option Value="">Selecione</option>
+                        <option Value="Cuidador de Idosos">Cuidador de Idoso</option>
+                        <option Value="Enfermeiro">Enfermeiro</option>
+                        <option Value="Babá">Babá</option>
+                        <option Value="Médico">Médico</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label>Formação</label><br />
+                    <select id="ddlFormacao" runat="server" autopostback="true" class="form-control">
+                        <option Value="">Selecione</option>
+                        <option Value="Fundamental">Fundamental</option>
+                        <option Value="Ensino médio">Ensino médio</option>
+                        <option Value="Técnico">Técnico</option>
+                        <option Value="Superior">Superior</option>
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Cidade</label>
+                    <select id="ddlCidade" runat="server" autopostback="true" class="form-control">
+                        <option Value="">Selecione</option>
+                        <option Value="Guaratinguetá">Guaratinguetá</option>
+                        <option Value="Lorena">Lorena</option>
+                        <option Value="Aparecida">Aparecida</option>
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Disponibilidade</label>
+                    <select id="ddlHorario" runat="server" autopostback="true" class="form-control">
+                        <option Value="">Selecione</option>
+                        <option Value="A combinar">A combinar</option>
+                        <option Value="Matutino">Matutino</option>
+                        <option Value="Vespertino">Vespertino</option>
+                        <option Value="Noturno">Noturno</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label>Experiência</label>
+                    <select id="ddlExperiencia" runat="server" autopostback="true" class="form-control">
+                        <option Value="">Selecione</option>
+                        <option Value="Sem experiência">Sem experiência</option>
+                        <option Value="até 1 ano">até 1 ano</option>
+                        <option Value="até 5 anos">até 5 anos</option>
+                        <option Value="mais de 5 anos">mais de 5 anos</option>
+                    </select>
+                </div>
+            </div>
+
+            <br />
+           
+        </div>
+
+        <!--Parte Direita-->
+
+        <div class="col-md-7 mt-4 blocoDireita">
+            <h2 id="resultado">@Model.Count() Resultados</h2>
+            <br />
+
+
+
+
+
+            @foreach (var item in Model)
+            {
+
+
+                <div class="row profissional">
+
+                    <div class="col-lg-6">
+                        <img class="img-responsive" src="~/Uploads/@item.Foto_perfil" style="width: 100%" />
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h1 style="font-size: 25px; font-weight: bold; color: #01a2e9">@Html.DisplayFor(modelItem => item.Usuario.Nome)</h1>
+                        <p class="title" id="Profissao">@Html.DisplayFor(modelItem => item.Profissao)</p>
+                        <div class="text-center">
+                            <h6>10 Avaliações</h6>
+                            <i class="fa fa-star second-color" style="color:yellow"></i>
+                            <i class="fa fa-star second-color" style="color:yellow"></i>
+                            <i class="fa fa-star second-color" style="color:yellow"></i>
+                            <i class="fa fa-star second-color" style="color:yellow"></i>
+                            <i class="fa fa-star second-color" style="color:yellow"></i>
+                            <h5>4.9</h5>
+                        </div>
+                    </div>
+
+					<div class="col-md-12" style="margin-top: 15px;">
+						<p>
+							<strong>Formação:</strong> <span id="Formacao">@Html.DisplayFor(modelItem => item.Escolaridade.Nivel)</span><br />
+							<strong>Disponibilidade:</strong><span id="Disponibilidade">@Html.DisplayFor(modelItem => item.Disponibilidade)</span><br />
+							<strong>Experiência profissional:</strong><span id="Experiencia">@Html.DisplayFor(modelItem => item.Experiencia)</span><br />
+
+							<strong>Cidade: </strong><span id="Cidade">@Html.DisplayFor(modelItem => item.Usuario.Endereco.ToList().FirstOrDefault().Cidade)</span>  / @Html.DisplayFor(modelItem => item.Usuario.Endereco.ToList().FirstOrDefault().Estado)<br />
+						</p>
+
+						@if (User.Identity.IsAuthenticated)
+						{
+							int id = Convert.ToInt32(User.Identity.Name.Split('|')[1]);
+							if (item.Movimentacaos.Where(x => x.UsuarioId == id).ToList().Count > 0)
+							{
+								<a href="" class="primary_btn">@Html.ActionLink("Ver mais", "DetalheProfissional", new { id = item.Id })</a>
+							}
+							else
+							{
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-@item.Id">
+									Ver mais
+								</button>
+							}
+
+						}
+						else
+						{
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-@item.Id">
+								Ver mais
+							</button>
+						}
+
+
+					</div>
+
+
+
+
+
+
+
+
+
+                    <!-- The Modal -->
+                    
+                    <br />
+
+                </div>
+                <div class="modal fade" id="myModal-@item.Id" style="margin-top:80px;">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Aliah</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <figure class="text-center">
+                                        <img src="~/img/alerta.jpg" style="height:200px;width:200px" />
+                                    </figure>
+                                </div>
+
+                                <!-- Modal footer -->
+								<div class="modal-footer">
+									@if (User.Identity.IsAuthenticated)
+									{
+										using (Html.BeginForm("ComprarVisualizacao", "Home", FormMethod.Post))
+										{
+											<input type="hidden" name="ProId" value="@item.Id" />
+											<button type="submit">Confirmar</button>
+
+										}
+									}
+
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+								</div>
+
+                            </div>
+                        </div>
+                    </div>
+            }
+
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#ddlCidade").change(function () {
+            busca();
+        })
+        $("#ddlProfissao").change(function () {
+            busca();
+        })
+        $("#ddlFormacao").change(function () {
+            busca();
+        })
+        $("#ddlHorario").change(function () {
+            busca();
+        })
+        $("#ddlExperiencia").change(function () {
+            busca();
+        })
+
+    })
+    function busca() {
+
+        var cidade = $("#ddlCidade").val();
+        var profissao = $("#ddlProfissao").val();
+        var formacao = $("#ddlFormacao").val();
+        var disponibilidade = $("#ddlHorario").val();
+        var experiencia = $("#ddlExperiencia").val();
+
+        $(".profissional").each(function () {
+            $(this).show();
+
+            var cid = $(this).find("#Cidade").text();
+            if (cidade != cid && cidade != "") {
+                $(this).hide();
+
+            }
+            var prof = $(this).find("#Profissao").text();
+            if (profissao != prof && profissao != "") {
+                $(this).hide();
+
+            }
+            var form = $(this).find("#Formacao").text();
+            if (formacao != form && formacao != "") {
+                $(this).hide();
+
+            }
+            var dis = $(this).find("#Disponibilidade").text();
+            if (disponibilidade != dis && disponibilidade != "") {
+                $(this).hide();
+
+            }
+            var exp = $(this).find("#Experiencia").text();
+            if (experiencia != exp && experiencia != "") {
+                $(this).hide();
+
+            }
+
+        })
+        $("#resultado").text($(".profissional:visible").length + " Resultados")
+    }
+</script>
+@*</table>*@

@@ -1,0 +1,66 @@
+﻿@model VaiCaralhoMVC.Models.Usuario
+
+
+@if (User.Identity.Name.Split('|')[2] == "3")
+{
+
+	ViewBag.Title = "Edit";
+	Layout = "~/Views/Shared/_PartialProfissional.cshtml";
+
+}
+else if (User.Identity.Name.Split('|')[2] == "2")
+{
+
+	ViewBag.Title = "Edit";
+	Layout = "~/Views/Shared/_PartialCliente.cshtml";
+
+}
+<div class="col-md-12">
+	<div class="row">
+		<div class="col-md-12">
+			<h3 style="color:cornflowerblue">@ViewBag.moeda</h3>
+		</div>
+
+		@foreach (var item in Model.Compra_moeda)
+		{
+
+
+			<div class=" w3-card-4  ml-4 col-md-3 mt-3 mb-5">
+				<br />
+
+				<h4 class="text-center">@item.Moeda.Nome</h4>
+
+				<hr />
+				<figure class="text-center">
+					<img src="~/img/services/mds1.png" alt="" />
+				</figure>
+				<br />
+				<br />
+
+				<p>Quantidade: @item.Quantidade moedas</p>
+				<p>Valor: @item.Valor reais</p>
+				<p>Data da compra: @item.Data</p>
+
+
+
+
+			</div>
+
+		}
+
+	</div>
+
+
+</div>
+<br />
+<br />
+<br />
+
+
+
+
+
+
+
+
+

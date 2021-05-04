@@ -1,0 +1,155 @@
+﻿@model VaiCaralhoMVC.Models.Acesso
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Acesso</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<style>
+		html,
+		body {
+			height: 100%;
+		}
+
+		body {
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-align: center;
+			align-items: center;
+			padding-top: 40px;
+			padding-bottom: 40px;
+			background-image: url(~/../../img/banner/common-banner.png);
+			color: #FFFFFF;
+		}
+
+		.form-signin {
+			width: 100%;
+			max-width: 330px;
+			padding: 15px;
+			margin: auto;
+		}
+
+			.form-signin .checkbox {
+				font-weight: 400;
+			}
+
+			.form-signin .form-control {
+				position: relative;
+				box-sizing: border-box;
+				height: auto;
+				padding: 10px;
+				font-size: 16px;
+			}
+
+				.form-signin .form-control:focus {
+					z-index: 2;
+				}
+
+			.form-signin input[type="email"] {
+				margin-bottom: -1px;
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+
+			.form-signin input[type="password"] {
+				margin-bottom: 10px;
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
+			}
+	</style>
+</head>
+<body>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/jqueryval")
+
+
+	
+
+		@*	<div class="form-horizontal">
+				<h4>Acesso</h4>
+				<hr />
+				@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+				<div class="form-group">
+					@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div class="form-group">
+					@Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+						<input type="submit" value="Create" class="btn btn-default" />
+					</div>
+				</div>
+			</div>
+		*@
+		<div class="col-md-12">
+			<div class="container-fluid text-center">
+                <div class="form-signin mt-3 mb-3">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <img class="mb-4" style="height:180px; width:180px" src="~/img/elefante.jpg" alt="">
+                        <h1 class="h3 mb-3 font-weight-normal">Aliah - Login</h1>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Lembrar-me
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Entrar" class="btn btn-default " />
+                            </div>
+                        </div>
+						<div>
+							<a href="~/Home/Cadastrar" style="color:black">Cadastrar</a>
+														<br />
+							<a href="~/Home/EsqueceuSenha" style="color:black">Esqueceu a senha?</a>
+														<br />
+							<a href="~/Home/Index" style="color:black">Voltar para página principal</a>
+
+							@*@Html.ActionLink("Voltar Index", "Index")*@
+						</div>
+                    }
+                </div>
+				
+			</div>
+		</div>
+
+
+
+</body>
+</html>

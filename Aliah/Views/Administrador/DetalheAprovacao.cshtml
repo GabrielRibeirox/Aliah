@@ -1,0 +1,99 @@
+﻿@model VaiCaralhoMVC.Models.Profissional
+
+@{
+    ViewBag.Title = "DetalheAprovacao";
+    Layout = "~/Views/Shared/LayoutAdm.cshtml";
+}
+
+<h2>Detalhes do solicitante</h2>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="w3-card-4 col-md-10">
+            <div class="row">
+                <div class="col-md-3 w3-card-4 mt-10 ml-4 w3-border">
+                    <img class="img-responsive" src="~/Uploads/@Model.Foto_perfil" style="width:250px;height:250px" />
+
+                    @*@Html.DisplayNameFor(model => model.Escolaridade.Curso)*@
+                </div>
+                <div class="col-md-4 mt-10 text-center">
+                    <h2 style="font-size:35px; font-weight: bold; color: #01a2e9">@Html.DisplayFor(modelItem => Model.Usuario.Nome)</h2>
+                    <br />
+                    <br />
+                    <p style="font-size:30px" class="title">@Html.DisplayFor(modelItem => Model.Profissao)</p>
+                  
+                </div>
+                <div class="col-md-3 mt-4 offset-1">
+                    <h5>Disponibilidades</h5>
+                    <hr />
+                    <p>Periodo: @Html.DisplayFor(model => model.Disponibilidade)</p>
+                    @foreach (var item in Model.Profissional_Capacitacao)
+                    {
+                        <p>Capacitação: @item.Capacitacao.Descricao</p>
+                    }
+
+                    @foreach (var item in Model.Profissional_habilidade)
+                    {
+                        <p>Habilidade: @item.Habilidade.Descricao</p>
+                    }
+
+
+                </div>
+
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-md-4 mt-3 ml-4">
+                    <h5>Escolaridade</h5>
+                    <hr />
+                    <p>Nível: @Html.DisplayFor(model => model.Escolaridade.Nivel)</p>
+                    <p>Status: @Html.DisplayFor(model => model.Escolaridade.Status)</p>
+                    <p>Modalidade: @Html.DisplayFor(model => model.Escolaridade.Modalidade)</p>
+                    <p>Instituição: @Html.DisplayFor(model => model.Escolaridade.Instituicao)</p>
+                    <p>Curso: @Html.DisplayFor(model => model.Escolaridade.Curso)</p>
+
+
+                </div>
+                <div class="col-md-4 mt-3 offset-1">
+                    <h5>Informações pessoais</h5>
+                    <hr />
+                    <p>Data de nascimento: @Html.DisplayFor(model => model.Usuario.Data_nascimento)</p>
+                    <p>Email: @Html.DisplayFor(model => model.Usuario.Email)</p>
+                    <p>Sexo: @Html.DisplayFor(model => model.Usuario.Sexo)</p>
+                    <p>Telefone: @Html.DisplayFor(model => model.Usuario.Telefone)</p>
+                    <p>Celular: @Html.DisplayFor(model => model.Usuario.Celular)</p>
+
+
+
+                </div>
+
+                <div class="col-md-4 mt-3 offset-1">
+                    <h5>Endereço</h5>
+                    <hr />
+                    <p>Estado: @Html.DisplayFor(model => model.Usuario.Endereco.ToList().FirstOrDefault().Estado)</p>
+                    <p>Cidade: @Html.DisplayFor(model => model.Usuario.Endereco.ToList().FirstOrDefault().Cidade)</p>
+                    <p>Bairro: @Html.DisplayFor(model => model.Usuario.Endereco.ToList().FirstOrDefault().Bairro)</p>
+                    @*<p>CEP: @Html.DisplayFor(model => model.Usuario.Endereco.ToList().FirstOrDefault().Cep)</p>*@
+
+                </div>
+                </div>
+            <div class="row">
+                <div class="col-md-6 mt-5 offset-1">
+                    <h5>Antecedentes criminais</h5>
+                    <img class="img-responsive" src="~/Uploads/@Model.Antecedentes_criminais" style="width:250px;height:250px" />
+                </div>
+                <div class="col-md-6 mt-5 offset-1">
+                    <h5>Comprovante de residencia</h5>
+                    <img class="img-responsive" src="~/Uploads/@Model.Comprovante_residencia" style="width:250px;height:250px" />
+
+                </div>
+                
+            </div>
+                <br />
+                <br />
+                <br />
+            </div>
+    </div>
+</div>
+

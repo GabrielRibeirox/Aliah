@@ -1,0 +1,183 @@
+﻿@model VaiCaralhoMVC.Models.PlanoMoeda
+
+@{
+    ViewBag.Title = "Tipo de Plano";
+}
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>Nossos Planos</h2>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+	
+	
+	
+
+
+
+<section class="services_area pb-0 section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main_title">
+
+                    <h2>Planos para Cuidadores</h2>
+
+                </div>
+            </div>
+            </div>
+		<div class="row">
+			@foreach (var item in Model.Planos)
+			{
+				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+					<div class="service_item">
+						<img src="../img/services/s4.png" alt="" />
+						<h4>@Html.DisplayFor(modelItem => item.Nome)</h4>
+						<h1>R$ @Html.DisplayFor(modelItem => item.Valor)</h1>
+						<br />
+						<p>@Html.DisplayFor(modelItem => item.Descricao)</p>
+
+						@*<a href="#" data-toggle="modal" data-target="#ModalPlano-@item.Id" class="primary_btn2 mt-35">Assinar</a><br />*@
+						@if (User.Identity.IsAuthenticated)
+						{
+							<a href="~/home/Pagamento/@item.Id" class="primary_btn2 mt-35">Assinar</a><br />
+						}
+						else
+						{
+						<a href="~/home/acesso" class="primary_btn2 mt-35">Assinar</a><br />
+						}
+					</div>
+
+				</div>
+
+				<div class="modal fade" id="ModalPlano-@item.Id" style="margin-top:60px; ">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">Assinar Plano</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<!-- Modal body -->
+							<div class="modal-body">
+								
+									<div class="service_item">
+										<img style="height:45px;width:45px" src="~/img/services/s4.png" />
+										<h4>@Html.DisplayFor(modelItem => item.Nome)</h4>
+										<h1>R$ @Html.DisplayFor(modelItem => item.Valor)</h1>
+										<br />
+										<p>@Html.DisplayFor(modelItem => item.Descricao)</p>
+									</div>
+
+								
+							</div>
+
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+								<a href="~/home/pagamento" class="primary_btn">Assinar Plano</a>
+								@if (User.Identity.IsAuthenticated)
+								{
+									using(Html.BeginForm("AssinarPlano", "Home", FormMethod.Post)) 
+									{
+										<input type="hidden" name="PlanoId" value="@item.Id" />
+										<button type="submit">Assinar Plano</button>
+									}
+								}
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			}
+		</div>
+        </div>
+ 
+</section>
+<section class="services_area pb-0 section-margin">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main_title">
+
+                    <h2>Planos de créditos para ver perfis</h2>
+
+                </div>
+            </div>
+        </div>
+
+		<div class="row">
+			@foreach (var item in Model.Moedas)
+			{
+				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+					<div class="service_item">
+						<img src="../img/services/mds1.png" alt="" />
+						<h4>@Html.DisplayFor(modelItem => item.Quantidade) Moedas</h4>
+						<h1>R$ @Html.DisplayFor(modelItem => item.Valor)</h1>
+						<br />
+						<p>@Html.DisplayFor(modelItem => item.Validade)</p>
+						<a href="#" data-toggle="modal" data-target="#ModalCompra_moeda-@item.Id" class="primary_btn2 mt-35">Assinar</a><br />
+					</div>
+				</div>
+
+				<div class="modal fade" id="ModalCompra_moeda-@item.Id" style="margin-top:100px; ">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">Assinar Plano</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<!-- Modal body -->
+							<div class="modal-body">
+
+                                <div class="service_item">
+
+                                    <h4>@Html.DisplayFor(modelItem => item.Nome)</h4>
+                                    <h1>R$ @Html.DisplayFor(modelItem => item.Valor)</h1>
+                                    <br />
+
+                                    <p>@Html.DisplayFor(modelItem => item.Quantidade) Moedas</p>
+                                    <a href="#" data-toggle="modal" data-target="#myModal" class="primary_btn2 mt-35">Assinar</a><br />
+                                </div>
+
+
+							</div>
+
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"  data-dismiss="modal">Fechar</button>
+								@if (User.Identity.IsAuthenticated)
+								{
+									using (Html.BeginForm("ComprarMoeda", "Home", FormMethod.Post))
+									{
+										<input type="hidden" name="MoedaId" value="@item.Id" />
+										<button type="submit">Comprar Moedas</button>
+									}
+								}
+								else
+								{
+									<button type="button" class="btn btn-secondary"><a href="~/home/acesso" style="color:white">Comprar moedas</a></button>
+								}
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+			}
+		</div>
+    </div>
+</section>

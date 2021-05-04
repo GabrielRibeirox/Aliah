@@ -1,0 +1,65 @@
+﻿@{
+	ViewBag.Title = "Contact";
+}
+<section class="banner_area">
+	<div class="banner_inner d-flex align-items-center">
+		<div class="container">
+			<div class="banner_content text-center">
+				<h2>Contato</h2>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--================ End Features Area =================-->
+<br />
+<section class="brands-area">
+
+	<div class="banner_inner d-flex align-items-center">
+		<div class="container ">
+			<div class="col-lg-12">
+				<div class="col-lg-12 text-center">
+					<h1 class="text-uppercase text-center">Entre em contato conosco</h1>
+				</div>
+
+				<br />
+				<div class="col-lg-6 m-4">
+					<label>Nome</label>
+					<input ID="txtNome" Class="form-control text-centers " placeholder="Nome" />
+				</div>
+
+				<div class="col-lg-6 m-4">
+					<label>Email</label>
+					<Input ID="txtEmail" Class="form-control" required="required" placeholder="Email" />
+				</div>
+
+				<div class="col-lg-3 m-4">
+					<label>Telefone</label>
+					<Input ID="txtTelefone" Class="form-control" required="required" placeholder="(12) xxxx-xxxx" />
+				</div>
+				<div class="col-lg-4 m-4">
+					<select ID="ddlAssunto" Class="form-control">
+						<option Text="Reclamações">Reclamações</option>
+						<option Text="Dúvidas">Dúvidas</option>
+					</select>
+				</div>
+
+				<div class="col-lg-6 m-4 form-group">
+					<Label ID="lblarea" runat="server">Escreva sua dúvidas</Label>
+					<Input runat="server" Class="form-control" ID="areatexto" Rows="3" />
+				</div>
+				<div class="col-lg-6 m-4 form-group">
+					<a class="primary_btn" href="#"><span>Enviar</span></a>
+				</div>
+				@*<div class="col-12 m-5 p-5">
+			<Literal runat="server" ID="ltlMSG"></Literal>
+		</div>*@
+				@*<div class="col-lg-2 m-4">
+			<a href="" ID="btnEnviar" Text="Salvar" class="btn btn-success form-control" OnClick="btnEnviar_Click" />
+		</div>*@
+			</div>
+		</div>
+
+	</div>
+</section>

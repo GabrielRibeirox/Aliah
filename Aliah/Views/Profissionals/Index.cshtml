@@ -1,0 +1,275 @@
+﻿@model  IEnumerable <VaiCaralhoMVC.Models.Profissional>
+
+
+@{
+	ViewBag.Title = "Index";
+}
+<style>
+	body {
+		font-family: Arial;
+	}
+
+	h2 {
+		font-size: 25px;
+		font-weight: bold;
+	}
+
+	.card {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		padding: 5px;
+	}
+
+	.title {
+		color: grey;
+	}
+
+	/*.blocoPesquisa {
+			margin-top: 100px;
+		}*/
+
+	.btnContato {
+		border: none;
+		outline: 0;
+		display: inline-block;
+		padding: 8px;
+		color: white;
+		text-align: center;
+		cursor: pointer;
+		width: 100%;
+		font-size: 18px;
+	}
+
+	.profissional {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		padding: 5px;
+		margin: 5px;
+		margin-bottom: 20px;
+		background-color: #fff;
+	}
+
+	/**.blocoEsquerda {
+			position: fixed;
+		}*/
+
+	.blocoDireita {
+		margin: 0 auto;
+		margin-right: 0;
+	}
+</style>
+@*<h2>Index</h2>
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>*@
+@*<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Escolaridade.Curso)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Plano.Data_inicio)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Usuario.Nome)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Profissao)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Disponibilidade)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Experiencia)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Foto_perfil)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Comprovante_residencia)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Antecedentes_criminais)
+		</th>
+		<th></th>
+	</tr>*@
+
+<section class="banner_area">
+	<div class="banner_inner d-flex align-items-center">
+		<div class="container">
+			<div class="banner_content text-center">
+				<h2>Encontre profissionais</h2>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="container">
+	<div class="row blocoPesquisa">
+
+		<div class="col-md-4 mt-4">
+			<h2>Busque profissionais</h2>
+			<div class="row">
+				<div class="col-md-6">
+					<label>Profissão</label><br />
+					<select id="ddlProfissao" autopostback="true" class="form-control">
+						<option Value="0">Cuidador de Idosos</option>
+						<option Value="1">Enfermeiro</option>
+						<option Value="2">Babá</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<label>Formação</label><br />
+					<select id="ddlFormacao" runat="server" autopostback="true" class="form-control">
+						<option Value="0">Ensino Superior</option>
+						<option Value="1">Curso Técnico</option>
+						<option Value="2">Autônomo</option>
+					</select>
+				</div>
+			</div>
+			<br />
+			<div class="row">
+				<div class="col-md-12">
+					<label>Cidade</label>
+					<select id="ddlCidade" runat="server" autopostback="true" class="form-control">
+						<option Value="0">Guaratinguetá</option>
+						<option Value="1">Lorena</option>
+						<option Value="2">Aparecida</option>
+					</select>
+				</div>
+			</div>
+			<br />
+			<div class="row">
+				<div class="col-md-6">
+					<label>Disponibilidade</label>
+					<select id="ddlHorario" runat="server" autopostback="true" class="form-control">
+						<option Value="0">Trabalhando</option>
+						<option Value="1">Matutino</option>
+						<option Value="2">Noturno</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<label>Experiência</label>
+					<select id="ddlExperiencia" runat="server" autopostback="true" class="form-control">
+						<option Value="0">Sem Experiência</option>
+						<option Value="1">até 1 ano</option>
+						<option Value="2">até 5 anos</option>
+						<option Value="3">mais de 5 anos</option>
+					</select>
+				</div>
+			</div>
+
+			<br />
+			<div class="row">
+				<div class="col-md-6">
+					<label>Capacitação</label>
+					<br />
+					<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+					<label for="vehicle1"> Remédio</label><br>
+					<input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+					<label for="vehicle2">Alimentação</label><br>
+					<input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+					<label for="vehicle3"> Banho</label><br>
+
+				</div>
+				<div class="col-md-6">
+					<label>Habilidades</label>
+					<br />
+					<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+					<label for="vehicle1"> Pode dirigir</label><br>
+					<input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+					<label for="vehicle2">Sabe cozinhar</label><br>
+					<input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+					<label for="vehicle3"> Fala inglês</label><br>
+
+				</div>
+			</div>
+
+		</div>
+
+		<!--Parte Direita-->
+
+		<div class="col-md-7 mt-4 blocoDireita">
+			<h2>@Model.Count() Resultados</h2>
+			<br />
+
+
+		
+
+
+				@foreach (var item in Model)
+				{
+
+
+				<div class="row profissional">
+
+					<div class="col-lg-6">
+						<img class="img-responsive" src="~/Uploads/@item.Foto_perfil" style="width: 100%" />
+					</div>
+					<div class="col-md-6 text-center">
+						<h1 style="font-size: 25px; font-weight: bold; color: #01a2e9">@Html.DisplayFor(modelItem => item.Usuario.Nome)</h1>
+						<p class="title">@Html.DisplayFor(modelItem => item.Profissao)</p>
+						<div class="text-center">
+							<h6>10 Avaliações</h6>
+							<i class="fa fa-star second-color" style="color:yellow"></i>
+							<i class="fa fa-star second-color" style="color:yellow"></i>
+							<i class="fa fa-star second-color" style="color:yellow"></i>
+							<i class="fa fa-star second-color" style="color:yellow"></i>
+							<i class="fa fa-star second-color" style="color:yellow"></i>
+							<h5>4.9</h5>
+						</div>
+					</div>
+
+					<div class="col-md-12" style="margin-top: 15px;">
+						<p>
+							<strong>Formação:</strong> @Html.DisplayFor(modelItem => item.Escolaridade.Nivel)<br />
+							<strong>Disponibilidade:</strong> @Html.DisplayFor(modelItem => item.Disponibilidade)<br />
+							<strong>Experiência profissional:</strong>@Html.DisplayFor(modelItem => item.Experiencia)<br />
+
+							<strong>Cidade: </strong>@Html.DisplayFor(modelItem => item.Usuario.Endereco.ToList().FirstOrDefault().Cidade) / @Html.DisplayFor(modelItem => item.Usuario.Endereco.ToList().FirstOrDefault().Estado)<br />
+						</p>
+						<a href="" class="primary_btn">@Html.ActionLink("Ver mais", "Details", new { id = item.Id })</a>
+
+					</div>
+					<br />
+					@*<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Escolaridade.Curso)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Plano.Data_inicio)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Usuario.Nome)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Profissao)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Disponibilidade)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Experiencia)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Foto_perfil)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Comprovante_residencia)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Antecedentes_criminais)
+					</td>
+					<td>
+						@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+						@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+						@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+					</td>
+				</tr>*@
+
+				</div>
+				}
+		
+		</div>
+
+	</div>
+</div>
+@*</table>*@
