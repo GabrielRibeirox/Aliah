@@ -6,4 +6,6 @@ Este projeto trata-se da criação de uma plataforma web para encontrar profissi
 
 BARTHOLO, Alexia. RIBEIRO, Gabriel. SERAFIM, Gleidson. PIMENTA, Tuluan. ALIAH: Encontre profissionais Cuidadores de pessoas. Guaratinguetá , 2019, Curso de Análise e Desenvolvimento de Sistemas, Faculdade de Tecnologia de Guaratinguetá, 2019.
 
+
+![image](aliah.jpg)
  
